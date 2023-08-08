@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetFwTypeLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -63,21 +64,16 @@ namespace firewalld
         {
 
         }
-        private bool IsFirewallEnabled()
+        private static NetFwTypeLib.INetFwMgr GetFirewallManager()
         {
-            Process process = new Process();
-            process.StartInfo.FileName = "netsh.exe";
-            process.StartInfo.Arguments = "advfirewall show currentprofile state";
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.Start();
-            string output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-            return output.Contains("ON");
+            const string CLSID_FIREWALL_MANAGER = "{304CE942-6E39-40D8-943A-B913C40C9CD4}";
+            Type objType = Type.GetTypeFromCLSID(new Guid(CLSID_FIREWALL_MANAGER));
+            return Activator.CreateInstance(objType) as NetFwTypeLib.INetFwMgr;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (IsFirewallEnabled())
+            INetFwMgr netFwMgr = GetFirewallManager();
+            if (netFwMgr.LocalPolicy.CurrentProfile.FirewallEnabled == true)
             {
                 status.BackColor = Color.Green;
             }
