@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFirewallHelper;
+using System.ServiceProcess;
 
 namespace firewalld
 {
@@ -116,6 +117,15 @@ namespace firewalld
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        public static void StopFirewallService()
+        {
+            ServiceController sc = new ServiceController("MpsSvc");
+            if (sc.Status != ServiceControllerStatus.Stopped)
+            {
+                sc.Stop();
+                sc.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
         }
     }
 }

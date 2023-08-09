@@ -34,8 +34,6 @@ namespace firewalld
             this.OpenFire = new System.Windows.Forms.Button();
             this.status = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -74,6 +72,8 @@ namespace firewalld
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ruletype = new System.Windows.Forms.ComboBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -95,7 +95,7 @@ namespace firewalld
             this.groupBox1.Size = new System.Drawing.Size(124, 96);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "防火墙服务";
+            this.groupBox1.Text = "防火墙";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // CloseFire
@@ -133,8 +133,8 @@ namespace firewalld
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Location = new System.Drawing.Point(28, 188);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
@@ -142,33 +142,8 @@ namespace firewalld
             this.groupBox2.Size = new System.Drawing.Size(124, 94);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "防火墙";
+            this.groupBox2.Text = "防火墙服务";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(20, 60);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 16);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "关闭";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(20, 28);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "打开";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -297,7 +272,7 @@ namespace firewalld
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(323, 251);
+            this.groupBox7.Size = new System.Drawing.Size(417, 251);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "添加规则";
@@ -306,13 +281,13 @@ namespace firewalld
             // 
             this.rulesname.Location = new System.Drawing.Point(120, 46);
             this.rulesname.Name = "rulesname";
-            this.rulesname.Size = new System.Drawing.Size(115, 21);
+            this.rulesname.Size = new System.Drawing.Size(154, 21);
             this.rulesname.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 20);
+            this.label3.Location = new System.Drawing.Point(42, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 3;
@@ -322,7 +297,7 @@ namespace firewalld
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 55);
+            this.label4.Location = new System.Drawing.Point(42, 55);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 3;
@@ -330,7 +305,7 @@ namespace firewalld
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(252, 104);
+            this.button3.Location = new System.Drawing.Point(321, 101);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 39);
@@ -343,7 +318,7 @@ namespace firewalld
             this.file_addr.Location = new System.Drawing.Point(120, 96);
             this.file_addr.Margin = new System.Windows.Forms.Padding(2);
             this.file_addr.Name = "file_addr";
-            this.file_addr.Size = new System.Drawing.Size(115, 21);
+            this.file_addr.Size = new System.Drawing.Size(154, 21);
             this.file_addr.TabIndex = 1;
             // 
             // button4
@@ -359,7 +334,7 @@ namespace firewalld
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 139);
+            this.label5.Location = new System.Drawing.Point(42, 141);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 3;
@@ -369,7 +344,7 @@ namespace firewalld
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 171);
+            this.label6.Location = new System.Drawing.Point(42, 171);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 3;
@@ -378,9 +353,9 @@ namespace firewalld
             // 
             // local_addr
             // 
-            this.local_addr.Location = new System.Drawing.Point(120, 130);
+            this.local_addr.Location = new System.Drawing.Point(120, 136);
             this.local_addr.Name = "local_addr";
-            this.local_addr.Size = new System.Drawing.Size(115, 21);
+            this.local_addr.Size = new System.Drawing.Size(154, 21);
             this.local_addr.TabIndex = 5;
             // 
             // groupBox8
@@ -494,29 +469,29 @@ namespace firewalld
             // 
             // local_port
             // 
-            this.local_port.Location = new System.Drawing.Point(120, 162);
+            this.local_port.Location = new System.Drawing.Point(120, 168);
             this.local_port.Name = "local_port";
-            this.local_port.Size = new System.Drawing.Size(115, 21);
+            this.local_port.Size = new System.Drawing.Size(154, 21);
             this.local_port.TabIndex = 5;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(120, 190);
+            this.textBox2.Location = new System.Drawing.Point(120, 195);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(115, 21);
+            this.textBox2.Size = new System.Drawing.Size(154, 21);
             this.textBox2.TabIndex = 6;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(120, 217);
+            this.textBox7.Location = new System.Drawing.Point(120, 223);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(115, 21);
+            this.textBox7.Size = new System.Drawing.Size(154, 21);
             this.textBox7.TabIndex = 6;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 198);
+            this.label11.Location = new System.Drawing.Point(42, 198);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 12);
             this.label11.TabIndex = 7;
@@ -525,7 +500,7 @@ namespace firewalld
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 226);
+            this.label12.Location = new System.Drawing.Point(42, 229);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 12);
             this.label12.TabIndex = 7;
@@ -548,9 +523,27 @@ namespace firewalld
             "NET_FW_ACTION_ALLOW"});
             this.ruletype.Location = new System.Drawing.Point(120, 15);
             this.ruletype.Name = "ruletype";
-            this.ruletype.Size = new System.Drawing.Size(115, 20);
+            this.ruletype.Size = new System.Drawing.Size(155, 20);
             this.ruletype.TabIndex = 8;
             this.ruletype.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(24, 27);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 29);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "打开";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(24, 62);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 29);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "关闭";
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -570,7 +563,6 @@ namespace firewalld
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -587,8 +579,6 @@ namespace firewalld
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -630,6 +620,8 @@ namespace firewalld
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox ruletype;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }
 
