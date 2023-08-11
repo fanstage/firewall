@@ -74,6 +74,7 @@ namespace firewalld
         private void Form1_Load(object sender, EventArgs e)
         {
             var table = new DataTable();
+            table.Columns.Add("描述",typeof(string));
             table.Columns.Add("类型", typeof(string));
             table.Columns.Add("Enabled", typeof(string));
             table.Columns.Add("本地路径", typeof(string));
@@ -81,6 +82,8 @@ namespace firewalld
             table.Columns.Add("本地端口", typeof(string));
             table.Columns.Add("远程地址", typeof(string));
             table.Columns.Add("远程端口", typeof(string));
+            table.Columns.Add("Protocol", typeof(string));
+            table.Columns.Add("Direction",typeof(string));
             List<string> rules = new List<string>();
             INetFwMgr netFwMgr = GetFirewallManager();
             if (netFwMgr.LocalPolicy.CurrentProfile.FirewallEnabled == true)
@@ -91,20 +94,13 @@ namespace firewalld
             {
                 status.BackColor = Color.Red;
             }
-            /*INetFwPolicy policy = netFwMgr.LocalPolicy;
-            INetFwProfile profile = policy.CurrentProfile;
-            INetFwRules fwRules = profile.Rules;
-            foreach (INetFwRule rule in fwRules)
-            {
-                rules.Add(rule.Name);
-            }*/
             Type type = Type.GetTypeFromProgID("HNetCfg.FwPolicy2");
             INetFwPolicy2 fwPolicy2 = (INetFwPolicy2)Activator.CreateInstance(type);
             INetFwRules fwRules = fwPolicy2.Rules;
             foreach (INetFwRule rule in fwRules)
             {
                 //rules.Add(rule.Name);
-                table.Rows.Add(rule.Action,rule.Enabled,rule.ApplicationName,rule.LocalAddresses,rule.LocalPorts,rule.RemoteAddresses,rule.RemotePorts);
+                table.Rows.Add(rule.Description,rule.Action,rule.Enabled,rule.ApplicationName,rule.LocalAddresses,rule.LocalPorts,rule.RemoteAddresses,rule.RemotePorts,rule.Protocol,rule.Direction);
             }
             dataGridView1.DataSource = table;
         }
