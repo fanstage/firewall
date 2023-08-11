@@ -123,5 +123,53 @@ namespace firewalld
                 sc.WaitForStatus(ServiceControllerStatus.Stopped);
             }
         }
+
+        private void addrule_Click(object sender, EventArgs e)
+        {
+            Type policyType = Type.GetTypeFromProgID("HNetCfg.FwPolicy2");
+            INetFwPolicy2 policy = (INetFwPolicy2)Activator.CreateInstance(policyType);
+
+            // 创建新的防火墙规则
+            Type ruleType = Type.GetTypeFromProgID("HNetCfg.FWRule");
+            INetFwRule rule = (INetFwRule)Activator.CreateInstance(ruleType);
+            rule.Name = description.Text;
+            rule.Description = description.Text;
+            rule.Action = (NET_FW_ACTION_)ruleaction.SelectedIndex;
+            bool enabled = bool.Parse(enabledbox.SelectedItem.ToString());
+            rule.Enabled = enabled;
+            rule.ApplicationName = file_addr.Text;
+            rule.LocalAddresses = local_addr.Text;
+            rule.LocalPorts = local_port.Text;
+            rule.RemoteAddresses = remoteaddr.Text;
+            rule.RemotePorts = remoteport.Text;
+            rule.Protocol = Convert.ToInt32(protocol.SelectedItem);
+            rule.Direction = (NET_FW_RULE_DIRECTION_)ruledirection.SelectedIndex;
+            policy.Rules.Add(rule);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // 创建 OpenFileDialog 实例
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            // 设置文件对话框的标题
+            openFileDialog.Title = "选择文件";
+
+            // 设置文件对话框的初始目录
+            openFileDialog.InitialDirectory = @"C:\";
+
+            // 设置文件对话框的过滤器
+            openFileDialog.Filter = "所有文件 (*.*)|*.*";
+
+            // 显示文件对话框
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // 获取选定文件的路径
+                string filePath = openFileDialog.FileName;
+
+                // 将文件路径显示在文本框中
+                file_addr.Text = filePath;
+            }
+        }
     }
 }

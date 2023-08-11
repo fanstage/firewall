@@ -59,12 +59,19 @@ namespace firewalld
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.ruletype = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.description = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.protocol = new System.Windows.Forms.ComboBox();
+            this.ruledirection = new System.Windows.Forms.ComboBox();
+            this.enabledbox = new System.Windows.Forms.ComboBox();
+            this.ruleaction = new System.Windows.Forms.ComboBox();
+            this.addrule = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.remoteport = new System.Windows.Forms.TextBox();
+            this.remoteaddr = new System.Windows.Forms.TextBox();
             this.local_port = new System.Windows.Forms.TextBox();
             this.local_addr = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,11 +80,6 @@ namespace firewalld
             this.label4 = new System.Windows.Forms.Label();
             this.file_addr = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.enabledbox = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.Protocol = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -395,17 +397,19 @@ namespace firewalld
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textBox8);
+            this.groupBox7.Controls.Add(this.description);
             this.groupBox7.Controls.Add(this.label13);
+            this.groupBox7.Controls.Add(this.protocol);
+            this.groupBox7.Controls.Add(this.ruledirection);
             this.groupBox7.Controls.Add(this.enabledbox);
-            this.groupBox7.Controls.Add(this.ruletype);
-            this.groupBox7.Controls.Add(this.button3);
+            this.groupBox7.Controls.Add(this.ruleaction);
+            this.groupBox7.Controls.Add(this.addrule);
+            this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.label14);
             this.groupBox7.Controls.Add(this.label12);
             this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Controls.Add(this.Protocol);
-            this.groupBox7.Controls.Add(this.textBox7);
-            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.remoteport);
+            this.groupBox7.Controls.Add(this.remoteaddr);
             this.groupBox7.Controls.Add(this.local_port);
             this.groupBox7.Controls.Add(this.local_addr);
             this.groupBox7.Controls.Add(this.label6);
@@ -423,27 +427,99 @@ namespace firewalld
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "添加规则";
             // 
-            // ruletype
+            // description
             // 
-            this.ruletype.FormattingEnabled = true;
-            this.ruletype.Items.AddRange(new object[] {
+            this.description.Location = new System.Drawing.Point(124, 26);
+            this.description.Name = "description";
+            this.description.Size = new System.Drawing.Size(155, 21);
+            this.description.TabIndex = 10;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(49, 35);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 12);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "描述";
+            // 
+            // protocol
+            // 
+            this.protocol.FormattingEnabled = true;
+            this.protocol.Items.AddRange(new object[] {
+            "17",
+            "6",
+            "1",
+            "58"});
+            this.protocol.Location = new System.Drawing.Point(124, 305);
+            this.protocol.Name = "protocol";
+            this.protocol.Size = new System.Drawing.Size(155, 20);
+            this.protocol.TabIndex = 8;
+            this.protocol.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // ruledirection
+            // 
+            this.ruledirection.FormattingEnabled = true;
+            this.ruledirection.Items.AddRange(new object[] {
+            "NET_FW_RULE_DIRECTION_IN",
+            "NET_FW_RULE_DIRECTION_OUT"});
+            this.ruledirection.Location = new System.Drawing.Point(124, 333);
+            this.ruledirection.Name = "ruledirection";
+            this.ruledirection.Size = new System.Drawing.Size(155, 20);
+            this.ruledirection.TabIndex = 8;
+            this.ruledirection.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // enabledbox
+            // 
+            this.enabledbox.FormattingEnabled = true;
+            this.enabledbox.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.enabledbox.Location = new System.Drawing.Point(124, 109);
+            this.enabledbox.Name = "enabledbox";
+            this.enabledbox.Size = new System.Drawing.Size(155, 20);
+            this.enabledbox.TabIndex = 8;
+            this.enabledbox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // ruleaction
+            // 
+            this.ruleaction.FormattingEnabled = true;
+            this.ruleaction.Items.AddRange(new object[] {
             "NET_FW_ACTION_BLOCK",
             "NET_FW_ACTION_ALLOW"});
-            this.ruletype.Location = new System.Drawing.Point(124, 69);
-            this.ruletype.Name = "ruletype";
-            this.ruletype.Size = new System.Drawing.Size(155, 20);
-            this.ruletype.TabIndex = 8;
-            this.ruletype.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.ruleaction.Location = new System.Drawing.Point(124, 69);
+            this.ruleaction.Name = "ruleaction";
+            this.ruleaction.Size = new System.Drawing.Size(155, 20);
+            this.ruleaction.TabIndex = 8;
+            this.ruleaction.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button3
+            // addrule
             // 
-            this.button3.Location = new System.Drawing.Point(321, 101);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(67, 39);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "添加";
-            this.button3.UseVisualStyleBackColor = true;
+            this.addrule.Location = new System.Drawing.Point(321, 101);
+            this.addrule.Margin = new System.Windows.Forms.Padding(2);
+            this.addrule.Name = "addrule";
+            this.addrule.Size = new System.Drawing.Size(67, 39);
+            this.addrule.TabIndex = 2;
+            this.addrule.Text = "添加";
+            this.addrule.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(46, 341);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(29, 12);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "方向";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(47, 313);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 12);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "协议类型";
             // 
             // label12
             // 
@@ -463,19 +539,19 @@ namespace firewalld
             this.label11.TabIndex = 7;
             this.label11.Text = "远程地址";
             // 
-            // textBox7
+            // remoteport
             // 
-            this.textBox7.Location = new System.Drawing.Point(124, 274);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(154, 21);
-            this.textBox7.TabIndex = 6;
+            this.remoteport.Location = new System.Drawing.Point(124, 274);
+            this.remoteport.Name = "remoteport";
+            this.remoteport.Size = new System.Drawing.Size(154, 21);
+            this.remoteport.TabIndex = 6;
             // 
-            // textBox2
+            // remoteaddr
             // 
-            this.textBox2.Location = new System.Drawing.Point(124, 243);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 21);
-            this.textBox2.TabIndex = 6;
+            this.remoteaddr.Location = new System.Drawing.Point(124, 243);
+            this.remoteaddr.Name = "remoteaddr";
+            this.remoteaddr.Size = new System.Drawing.Size(154, 21);
+            this.remoteaddr.TabIndex = 6;
             // 
             // local_port
             // 
@@ -547,50 +623,7 @@ namespace firewalld
             this.button4.TabIndex = 0;
             this.button4.Text = "选择文件";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // enabledbox
-            // 
-            this.enabledbox.FormattingEnabled = true;
-            this.enabledbox.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.enabledbox.Location = new System.Drawing.Point(124, 109);
-            this.enabledbox.Name = "enabledbox";
-            this.enabledbox.Size = new System.Drawing.Size(155, 20);
-            this.enabledbox.TabIndex = 8;
-            this.enabledbox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(49, 35);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 12);
-            this.label13.TabIndex = 9;
-            this.label13.Text = "描述";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(124, 26);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(155, 21);
-            this.textBox8.TabIndex = 10;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(47, 313);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 12);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "协议类型";
-            // 
-            // Protocol
-            // 
-            this.Protocol.Location = new System.Drawing.Point(124, 304);
-            this.Protocol.Name = "Protocol";
-            this.Protocol.Size = new System.Drawing.Size(154, 21);
-            this.Protocol.TabIndex = 6;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -644,7 +677,7 @@ namespace firewalld
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addrule;
         private System.Windows.Forms.TextBox file_addr;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox8;
@@ -662,17 +695,19 @@ namespace firewalld
         private System.Windows.Forms.TextBox local_addr;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox remoteport;
+        private System.Windows.Forms.TextBox remoteaddr;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox ruletype;
+        private System.Windows.Forms.ComboBox ruleaction;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ComboBox enabledbox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox description;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox Protocol;
+        private System.Windows.Forms.ComboBox ruledirection;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox protocol;
     }
 }
 
